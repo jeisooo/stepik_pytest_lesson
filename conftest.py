@@ -22,19 +22,10 @@ def browser(request):
 
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        #browser = webdriver.Chrome()
-        # присваиваем опции браузеру для скрытия
         options = Options()
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-        #options.binary_location = '/usr/bin/google-chrome-unstable'
-        #options.add_argument('headless')
-        #options.add_argument('window-size=1200x600')
         browser = webdriver.Chrome(options=options)
-        # конец присваивания
 
-    elif browser_name == "firefox":
-        print("\nstart firefox browser for test..")
-        browser = webdriver.Firefox()
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
